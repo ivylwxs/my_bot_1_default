@@ -18,6 +18,7 @@ dp = Dispatcher()
 
 @dp.message(CommandStart())
 async def command_start_handler(message: Message) -> None:
+    safe_name = html.escape(message.from_user.full_name)
     await message.answer(f"Salom, {html.bold(message.from_user.full_name)}!")
 
 
@@ -37,7 +38,7 @@ async def get_me(message: Message):
 # function - birthday, age,
 
 @dp.message(F.text.regexp(r'[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+'))
-async def hadnle_email(message: Message):
+async def handle_email(message: Message):
     await message.answer('Siz email yubordingiz!')
 
 
